@@ -14,9 +14,11 @@
 		1CFC2EA826D17CB800739357 /* GmailClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EA626D17CB800739357 /* GmailClient.xcdatamodeld */; };
 		1CFC2EAA26D17CB800739357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFC2EA926D17CB800739357 /* Assets.xcassets */; };
 		1CFC2EAD26D17CB800739357 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CFC2EAB26D17CB800739357 /* LaunchScreen.storyboard */; };
+		536117540A71C218CC4EC54D /* Pods_GmailClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165DF26D321D7F5D329EAD2B /* Pods_GmailClient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		165DF26D321D7F5D329EAD2B /* Pods_GmailClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GmailClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CFC2E9A26D17CB700739357 /* GmailClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GmailClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CFC2E9D26D17CB700739357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CFC2E9F26D17CB700739357 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		1CFC2EA926D17CB800739357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CFC2EAC26D17CB800739357 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CFC2EAE26D17CB800739357 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FBD86E5439E1006E17D1F1E /* Pods-GmailClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GmailClient.release.xcconfig"; path = "Target Support Files/Pods-GmailClient/Pods-GmailClient.release.xcconfig"; sourceTree = "<group>"; };
+		F88C468BF10194E69F72109A /* Pods-GmailClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GmailClient.debug.xcconfig"; path = "Target Support Files/Pods-GmailClient/Pods-GmailClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				536117540A71C218CC4EC54D /* Pods_GmailClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				1CFC2E9C26D17CB700739357 /* GmailClient */,
 				1CFC2E9B26D17CB700739357 /* Products */,
+				EA96608CB49E3B4DCF2A9BED /* Pods */,
+				7AEA8563241634A19B582094 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +77,24 @@
 			path = GmailClient;
 			sourceTree = "<group>";
 		};
+		7AEA8563241634A19B582094 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				165DF26D321D7F5D329EAD2B /* Pods_GmailClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA96608CB49E3B4DCF2A9BED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F88C468BF10194E69F72109A /* Pods-GmailClient.debug.xcconfig */,
+				8FBD86E5439E1006E17D1F1E /* Pods-GmailClient.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1CFC2EB126D17CB800739357 /* Build configuration list for PBXNativeTarget "GmailClient" */;
 			buildPhases = (
+				C768413FD00FFDCCD47F7C57 /* [CP] Check Pods Manifest.lock */,
 				1CFC2E9626D17CB700739357 /* Sources */,
 				1CFC2E9726D17CB700739357 /* Frameworks */,
 				1CFC2E9826D17CB700739357 /* Resources */,
+				D2C1C6BB60EA1531D285DBA7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,6 +161,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C768413FD00FFDCCD47F7C57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GmailClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2C1C6BB60EA1531D285DBA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GmailClient/Pods-GmailClient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GmailClient/Pods-GmailClient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GmailClient/Pods-GmailClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1CFC2E9626D17CB700739357 /* Sources */ = {
@@ -287,6 +356,7 @@
 		};
 		1CFC2EB226D17CB800739357 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F88C468BF10194E69F72109A /* Pods-GmailClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +376,7 @@
 		};
 		1CFC2EB326D17CB800739357 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FBD86E5439E1006E17D1F1E /* Pods-GmailClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
