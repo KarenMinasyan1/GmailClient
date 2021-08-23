@@ -3,31 +3,61 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C30976726D3BA9D00C08710 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30976626D3BA9D00C08710 /* Parser.swift */; };
+		1C30976926D3C48C00C08710 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30976826D3C48C00C08710 /* NetworkError.swift */; };
+		1C507C5426D3848F0000464A /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C507C5326D3848F0000464A /* UIViewController+Alert.swift */; };
+		1C507D3826D3916A0000464A /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C507D3726D3916A0000464A /* MessageList.swift */; };
 		1CFC2E9E26D17CB700739357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2E9D26D17CB700739357 /* AppDelegate.swift */; };
 		1CFC2EA026D17CB700739357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2E9F26D17CB700739357 /* SceneDelegate.swift */; };
-		1CFC2EA226D17CB700739357 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EA126D17CB700739357 /* ViewController.swift */; };
+		1CFC2EA226D17CB700739357 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EA126D17CB700739357 /* SignInViewController.swift */; };
 		1CFC2EA526D17CB800739357 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CFC2EA326D17CB800739357 /* Main.storyboard */; };
 		1CFC2EA826D17CB800739357 /* GmailClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EA626D17CB800739357 /* GmailClient.xcdatamodeld */; };
 		1CFC2EAA26D17CB800739357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CFC2EA926D17CB800739357 /* Assets.xcassets */; };
 		1CFC2EAD26D17CB800739357 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CFC2EAB26D17CB800739357 /* LaunchScreen.storyboard */; };
+		1CFC2EB526D1800A00739357 /* GoogleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EB426D1800A00739357 /* GoogleAuthorizationService.swift */; };
+		1CFC2EB726D2399100739357 /* MessageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EB626D2399100739357 /* MessageListViewController.swift */; };
+		1CFC2EB926D239FC00739357 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EB826D239FC00739357 /* AuthorizationService.swift */; };
+		1CFC2EBD26D25EF800739357 /* MessageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EBC26D25EF800739357 /* MessageDetailsViewController.swift */; };
+		1CFC2EC026D263BB00739357 /* MessageProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EBF26D263BB00739357 /* MessageProviderProtocol.swift */; };
+		1CFC2EC226D2665600739357 /* GmailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EC126D2665600739357 /* GmailNetworkService.swift */; };
+		1CFC2EC426D26EB300739357 /* GmailMessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EC326D26EB300739357 /* GmailMessageProvider.swift */; };
+		1CFC2EC826D2E8BF00739357 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2EC726D2E8BF00739357 /* Observable.swift */; };
+		1CFC2FAF26D2EAC800739357 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2FAE26D2EAC800739357 /* SignInViewModel.swift */; };
+		1CFC2FB126D2EAD500739357 /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2FB026D2EAD500739357 /* MessageListViewModel.swift */; };
+		1CFC2FB326D2EAEA00739357 /* MessageDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2FB226D2EAEA00739357 /* MessageDetailsViewModel.swift */; };
 		536117540A71C218CC4EC54D /* Pods_GmailClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165DF26D321D7F5D329EAD2B /* Pods_GmailClient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		165DF26D321D7F5D329EAD2B /* Pods_GmailClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GmailClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C30976626D3BA9D00C08710 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		1C30976826D3C48C00C08710 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		1C507C5326D3848F0000464A /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		1C507D3726D3916A0000464A /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		1CFC2E9A26D17CB700739357 /* GmailClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GmailClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CFC2E9D26D17CB700739357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CFC2E9F26D17CB700739357 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1CFC2EA126D17CB700739357 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1CFC2EA126D17CB700739357 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1CFC2EA426D17CB800739357 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1CFC2EA726D17CB800739357 /* GmailClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GmailClient.xcdatamodel; sourceTree = "<group>"; };
 		1CFC2EA926D17CB800739357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CFC2EAC26D17CB800739357 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CFC2EAE26D17CB800739357 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CFC2EB426D1800A00739357 /* GoogleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthorizationService.swift; sourceTree = "<group>"; };
+		1CFC2EB626D2399100739357 /* MessageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewController.swift; sourceTree = "<group>"; };
+		1CFC2EB826D239FC00739357 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		1CFC2EBC26D25EF800739357 /* MessageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailsViewController.swift; sourceTree = "<group>"; };
+		1CFC2EBF26D263BB00739357 /* MessageProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageProviderProtocol.swift; sourceTree = "<group>"; };
+		1CFC2EC126D2665600739357 /* GmailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailNetworkService.swift; sourceTree = "<group>"; };
+		1CFC2EC326D26EB300739357 /* GmailMessageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailMessageProvider.swift; sourceTree = "<group>"; };
+		1CFC2EC726D2E8BF00739357 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		1CFC2FAE26D2EAC800739357 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		1CFC2FB026D2EAD500739357 /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
+		1CFC2FB226D2EAEA00739357 /* MessageDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailsViewModel.swift; sourceTree = "<group>"; };
 		8FBD86E5439E1006E17D1F1E /* Pods-GmailClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GmailClient.release.xcconfig"; path = "Target Support Files/Pods-GmailClient/Pods-GmailClient.release.xcconfig"; sourceTree = "<group>"; };
 		F88C468BF10194E69F72109A /* Pods-GmailClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GmailClient.debug.xcconfig"; path = "Target Support Files/Pods-GmailClient/Pods-GmailClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,7 +97,11 @@
 			children = (
 				1CFC2E9D26D17CB700739357 /* AppDelegate.swift */,
 				1CFC2E9F26D17CB700739357 /* SceneDelegate.swift */,
-				1CFC2EA126D17CB700739357 /* ViewController.swift */,
+				1CFC2EBB26D25ECA00739357 /* Modules */,
+				1CFC2EBE26D25F1F00739357 /* Networking */,
+				1CFC2EBA26D25EB800739357 /* Authorization */,
+				1CFC2EC526D276A900739357 /* Extensions */,
+				1CFC2EC626D2E8AE00739357 /* Utils */,
 				1CFC2EA326D17CB800739357 /* Main.storyboard */,
 				1CFC2EA926D17CB800739357 /* Assets.xcassets */,
 				1CFC2EAB26D17CB800739357 /* LaunchScreen.storyboard */,
@@ -75,6 +109,81 @@
 				1CFC2EA626D17CB800739357 /* GmailClient.xcdatamodeld */,
 			);
 			path = GmailClient;
+			sourceTree = "<group>";
+		};
+		1CFC2EBA26D25EB800739357 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC2EB826D239FC00739357 /* AuthorizationService.swift */,
+				1CFC2EB426D1800A00739357 /* GoogleAuthorizationService.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		1CFC2EBB26D25ECA00739357 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC2FAB26D2EA7D00739357 /* SignIn */,
+				1CFC2FAC26D2EA8400739357 /* MessageList */,
+				1CFC2FAD26D2EA8F00739357 /* MessageInfo */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		1CFC2EBE26D25F1F00739357 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC2EBF26D263BB00739357 /* MessageProviderProtocol.swift */,
+				1CFC2EC126D2665600739357 /* GmailNetworkService.swift */,
+				1CFC2EC326D26EB300739357 /* GmailMessageProvider.swift */,
+				1C30976626D3BA9D00C08710 /* Parser.swift */,
+				1C30976826D3C48C00C08710 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		1CFC2EC526D276A900739357 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1C507C5326D3848F0000464A /* UIViewController+Alert.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1CFC2EC626D2E8AE00739357 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC2EC726D2E8BF00739357 /* Observable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1CFC2FAB26D2EA7D00739357 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC2EA126D17CB700739357 /* SignInViewController.swift */,
+				1CFC2FAE26D2EAC800739357 /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		1CFC2FAC26D2EA8400739357 /* MessageList */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC2EB626D2399100739357 /* MessageListViewController.swift */,
+				1CFC2FB026D2EAD500739357 /* MessageListViewModel.swift */,
+				1C507D3726D3916A0000464A /* MessageList.swift */,
+			);
+			path = MessageList;
+			sourceTree = "<group>";
+		};
+		1CFC2FAD26D2EA8F00739357 /* MessageInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC2EBC26D25EF800739357 /* MessageDetailsViewController.swift */,
+				1CFC2FB226D2EAEA00739357 /* MessageDetailsViewModel.swift */,
+			);
+			path = MessageInfo;
 			sourceTree = "<group>";
 		};
 		7AEA8563241634A19B582094 /* Frameworks */ = {
@@ -91,7 +200,6 @@
 				F88C468BF10194E69F72109A /* Pods-GmailClient.debug.xcconfig */,
 				8FBD86E5439E1006E17D1F1E /* Pods-GmailClient.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,10 +317,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CFC2EA226D17CB700739357 /* ViewController.swift in Sources */,
+				1CFC2EC426D26EB300739357 /* GmailMessageProvider.swift in Sources */,
+				1CFC2EA226D17CB700739357 /* SignInViewController.swift in Sources */,
+				1CFC2EB926D239FC00739357 /* AuthorizationService.swift in Sources */,
 				1CFC2EA826D17CB800739357 /* GmailClient.xcdatamodeld in Sources */,
+				1CFC2FAF26D2EAC800739357 /* SignInViewModel.swift in Sources */,
+				1CFC2EC826D2E8BF00739357 /* Observable.swift in Sources */,
+				1CFC2EBD26D25EF800739357 /* MessageDetailsViewController.swift in Sources */,
+				1C507C5426D3848F0000464A /* UIViewController+Alert.swift in Sources */,
+				1CFC2EC026D263BB00739357 /* MessageProviderProtocol.swift in Sources */,
+				1CFC2FB326D2EAEA00739357 /* MessageDetailsViewModel.swift in Sources */,
+				1CFC2FB126D2EAD500739357 /* MessageListViewModel.swift in Sources */,
+				1CFC2EC226D2665600739357 /* GmailNetworkService.swift in Sources */,
+				1CFC2EB526D1800A00739357 /* GoogleAuthorizationService.swift in Sources */,
 				1CFC2E9E26D17CB700739357 /* AppDelegate.swift in Sources */,
+				1C30976726D3BA9D00C08710 /* Parser.swift in Sources */,
+				1CFC2EB726D2399100739357 /* MessageListViewController.swift in Sources */,
+				1C507D3826D3916A0000464A /* MessageList.swift in Sources */,
 				1CFC2EA026D17CB700739357 /* SceneDelegate.swift in Sources */,
+				1C30976926D3C48C00C08710 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

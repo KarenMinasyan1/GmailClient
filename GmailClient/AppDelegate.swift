@@ -7,11 +7,12 @@
 
 import UIKit
 import CoreData
+import AppAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) ?? false {
+            currentAuthorizationFlow = nil
+            return true
+        }
+        return false
     }
 
     // MARK: - Core Data stack
