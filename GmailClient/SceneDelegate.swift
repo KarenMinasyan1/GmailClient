@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         var viewController: UIViewController
 
-//        GTMAppAuthFetcherAuthorization.removeFromKeychain(forName: "authorizer_key")
-        if let authorizer = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorizer_key") {
+//        GTMAppAuthFetcherAuthorization.removeFromKeychain(forName: GoogleAuthorizationService.authorizerKey)
+        if let authorizer = GTMAppAuthFetcherAuthorization(fromKeychainForName: GoogleAuthorizationService.authorizerKey) {
             let networkService = GmailNetworkService(authorizer: authorizer, parser: Parser())
             let gmailMessageProvider = GmailMessageProvider(networkService: networkService)
 
@@ -32,15 +32,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                         userID: authorizer.userID!)
             let messageListVC = MessageListViewController()
             messageListVC.viewModel = viewModel
-            viewController = messageListVC
+            viewController = UINavigationController(rootViewController: messageListVC)
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController = storyboard.instantiateViewController(identifier: "SignInViewController")
-            (viewController as! SignInViewController).authService = GoogleAuthorizationService()
+            let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
+            (viewController as! SignInViewController).viewModel = viewModel
         }
 
         /// 4. Set the root view controller of the window with your view controller
-        window.rootViewController = UINavigationController(rootViewController: viewController)
+        window.rootViewController = viewController
 
         /// 5. Set the window and call makeKeyAndVisible()
         self.window = window

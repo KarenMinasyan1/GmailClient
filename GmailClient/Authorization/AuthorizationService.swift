@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO:-- Remove
 protocol AuthorizationService {
     func signInWithPresentingViewCotroller(_ vc: UIViewController,
                                            completion: @escaping (Error?) -> Void)

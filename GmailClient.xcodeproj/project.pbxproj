@@ -13,7 +13,8 @@
 		1C351F2A26D40FD700C2022A /* MessageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C351F2926D40FD700C2022A /* MessageInfo.swift */; };
 		1C351F2C26D416D500C2022A /* String+Base64URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C351F2B26D416D500C2022A /* String+Base64URL.swift */; };
 		1C35201026D450CA00C2022A /* UIView+AddSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35200F26D450CA00C2022A /* UIView+AddSubview.swift */; };
-		1C507C5426D3848F0000464A /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C507C5326D3848F0000464A /* UIViewController+Alert.swift */; };
+		1C3523A026D554AF00C2022A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35239F26D554AF00C2022A /* ViewController.swift */; };
+		1C3523A226D5779F00C2022A /* UIApplication+RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3523A126D5779F00C2022A /* UIApplication+RootView.swift */; };
 		1C507D3826D3916A0000464A /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C507D3726D3916A0000464A /* MessageList.swift */; };
 		1CFC2E9E26D17CB700739357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2E9D26D17CB700739357 /* AppDelegate.swift */; };
 		1CFC2EA026D17CB700739357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2E9F26D17CB700739357 /* SceneDelegate.swift */; };
@@ -44,7 +45,8 @@
 		1C351F2926D40FD700C2022A /* MessageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInfo.swift; sourceTree = "<group>"; };
 		1C351F2B26D416D500C2022A /* String+Base64URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base64URL.swift"; sourceTree = "<group>"; };
 		1C35200F26D450CA00C2022A /* UIView+AddSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubview.swift"; sourceTree = "<group>"; };
-		1C507C5326D3848F0000464A /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		1C35239F26D554AF00C2022A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1C3523A126D5779F00C2022A /* UIApplication+RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+RootView.swift"; sourceTree = "<group>"; };
 		1C507D3726D3916A0000464A /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		1CFC2E9A26D17CB700739357 /* GmailClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GmailClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CFC2E9D26D17CB700739357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C35239E26D5548900C2022A /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				1C35239F26D554AF00C2022A /* ViewController.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
 		1CFC2E9126D17CB700739357 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 				1CFC2EBE26D25F1F00739357 /* Networking */,
 				1CFC2EBA26D25EB800739357 /* Authorization */,
 				1CFC2EC526D276A900739357 /* Extensions */,
+				1C35239E26D5548900C2022A /* BaseClasses */,
 				1CFC2EC626D2E8AE00739357 /* Utils */,
 				1CFC2EA326D17CB800739357 /* Main.storyboard */,
 				1CFC2EA926D17CB800739357 /* Assets.xcassets */,
@@ -152,9 +163,9 @@
 		1CFC2EC526D276A900739357 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1C507C5326D3848F0000464A /* UIViewController+Alert.swift */,
 				1C351F2B26D416D500C2022A /* String+Base64URL.swift */,
 				1C35200F26D450CA00C2022A /* UIView+AddSubview.swift */,
+				1C3523A126D5779F00C2022A /* UIApplication+RootView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,9 +346,9 @@
 				1CFC2EA826D17CB800739357 /* GmailClient.xcdatamodeld in Sources */,
 				1CFC2FAF26D2EAC800739357 /* SignInViewModel.swift in Sources */,
 				1C351F2C26D416D500C2022A /* String+Base64URL.swift in Sources */,
+				1C3523A026D554AF00C2022A /* ViewController.swift in Sources */,
 				1CFC2EC826D2E8BF00739357 /* Observable.swift in Sources */,
 				1CFC2EBD26D25EF800739357 /* MessageDetailsViewController.swift in Sources */,
-				1C507C5426D3848F0000464A /* UIViewController+Alert.swift in Sources */,
 				1CFC2EC026D263BB00739357 /* MessageProviderProtocol.swift in Sources */,
 				1CFC2FB326D2EAEA00739357 /* MessageDetailsViewModel.swift in Sources */,
 				1CFC2FB126D2EAD500739357 /* MessageListViewModel.swift in Sources */,
@@ -348,6 +359,7 @@
 				1CFC2E9E26D17CB700739357 /* AppDelegate.swift in Sources */,
 				1C30976726D3BA9D00C08710 /* Parser.swift in Sources */,
 				1CFC2EB726D2399100739357 /* MessageListViewController.swift in Sources */,
+				1C3523A226D5779F00C2022A /* UIApplication+RootView.swift in Sources */,
 				1C35201026D450CA00C2022A /* UIView+AddSubview.swift in Sources */,
 				1C507D3826D3916A0000464A /* MessageList.swift in Sources */,
 				1CFC2EA026D17CB700739357 /* SceneDelegate.swift in Sources */,

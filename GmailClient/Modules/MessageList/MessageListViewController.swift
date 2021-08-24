@@ -8,7 +8,7 @@
 import UIKit
 import GTMAppAuth
 
-final class MessageListViewController: UIViewController {
+final class MessageListViewController: ViewController {
 
     var viewModel: MessageListViewModel!
 
@@ -23,6 +23,7 @@ final class MessageListViewController: UIViewController {
         configureDataSource()
         bindViewModel()
         viewModel.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOutTap))
     }
 
     private func bindViewModel() {
@@ -30,23 +31,44 @@ final class MessageListViewController: UIViewController {
         viewModel.errorMessage.observe(on: self) { [weak self] in self?.showError(message: $0) }
         viewModel.loading.observe(on: self) { [weak self] in self?.showLoading($0) }
         viewModel.selectMessage.observe(on: self) { [weak self] in self?.showMessageDetails(viewModel: $0) }
+        viewModel.logout.observe(on: self) { [weak self] in self?.logoutAction($0) }
     }
 
     private func showLoading(_ loading: Bool) {
         
     }
 
-    private func showError(message: String) {
-        if !message.isEmpty {
-            showAlert(message: message)
-        }
-    }
-
     private func showMessageDetails(viewModel: MessageDetailsViewModel?) {
         guard let mViewModel = viewModel else { return }
-        let viewController = MessageDetailViewController()
+        let viewController = MessageDetailsViewController()
         viewController.viewModel = mViewModel
         navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    @objc func logOutTap() {
+        let alertController = UIAlertController(title: "Are you sure you want to logout?", message: nil, preferredStyle: .actionSheet)
+
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
+            self.viewModel.logoutTap()
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alertController.addAction(logoutAction)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func logoutAction(_ isLoggedOut: Bool) {
+        if isLoggedOut {
+            // TODO duplicate
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: "SignInViewController") as! SignInViewController
+            let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
+            viewController.viewModel = viewModel
+            UIApplication.setRootView(viewController)
+        }
     }
 }
 

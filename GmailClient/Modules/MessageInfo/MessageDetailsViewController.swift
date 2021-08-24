@@ -7,8 +7,7 @@
 
 import UIKit
 
-// TODO rename details or detail or info
-final class MessageDetailViewController: UIViewController {
+final class MessageDetailsViewController: ViewController {
 
     let scrollView = UIScrollView()
     let stackView = UIStackView()
@@ -67,13 +66,6 @@ final class MessageDetailViewController: UIViewController {
         senderLabel.text = info.from
         subjectLabel.text = info.subject
         bodyLabel.text = info.body
-    }
-
-    // TODO: -- duplicate
-    private func showError(message: String) {
-        if !message.isEmpty {
-            showAlert(message: message)
-        }
     }
 
     private func showLoading(_ loading: Bool) {

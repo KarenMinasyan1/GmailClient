@@ -10,6 +10,8 @@ import Foundation
 enum NetworkError: Error {
     case invalidRequest
     case dataMissing
+    case tokenMissing
     case responseError(error: Error)
     case parserError(error: Error)
+    case authorization(error: Error)
 }

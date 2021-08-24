@@ -24,8 +24,19 @@ final class GmailNetworkService {
     func load<T: Decodable>(_ request: URLRequest, completion: @escaping ResultCallback<T>) {
         authorizer.authState.performAction { [weak self] accessToken, _, error in
             guard let self = self else { return }
+
+            if let error = error {
+                DispatchQueue.main.async { completion(.failure(.authorization(error: error))) }
+                return
+            }
+
+            guard let accessToken = accessToken else {
+                DispatchQueue.main.async { completion(.failure(.tokenMissing)) }
+                return
+            }
+
             var urlRequest = request
-            urlRequest.setValue("Bearer \(accessToken!)", forHTTPHeaderField: "Authorization") // TODO force!!!
+            urlRequest.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             self.fetcherService.fetcher(with: urlRequest).beginFetch { data, error in
 
                 if let error = error {

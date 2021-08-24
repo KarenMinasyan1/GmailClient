@@ -10,12 +10,14 @@ import Foundation
 protocol MessageListViewModelInput {
     func viewDidLoad()
     func didSelectItem(at index: Int)
+    func logoutTap()
 }
 
 protocol MessageListViewModelOutput {
     var messages: Observable<[String]> { get }
     var selectMessage: Observable<MessageDetailsViewModel?> { get }
     var errorMessage: Observable<String> { get }
+    var logout: Observable<Bool> { get }
     var loading: Observable<Bool> { get }
 }
 
@@ -31,6 +33,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     var messages: Observable<[String]> = Observable([])
     var selectMessage: Observable<MessageDetailsViewModel?> = Observable(nil)
     var errorMessage: Observable<String> = Observable("")
+    var logout: Observable<Bool> = Observable(false)
     var loading: Observable<Bool> = Observable(false)
 
     init(messageProvider: MessageProviderProtocol,
@@ -50,6 +53,11 @@ final class DefaultMessageListViewModel: MessageListViewModel {
                                                        messageID: messages.value[index],
                                                        userID: userID)
         selectMessage.value = viewModel
+    }
+
+    func logoutTap() {
+        GoogleAuthorizationService.removeState()
+        logout.value = true
     }
 
     // Private

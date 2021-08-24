@@ -6,42 +6,46 @@
 //
 
 import UIKit
+import AppAuth
 
-class SignInViewController: UIViewController {
+final class SignInViewController: ViewController {
 
-    var authService: GoogleAuthorizationService! // TODO: AuthorizationService
+    var viewModel: SignInViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        bindViewModel()
     }
 
+    private func bindViewModel() {
+        viewModel.authRequest.observe(on: self) { [weak self] in self?.presentAuthorizationRequest($0) }
+        viewModel.errorMessage.observe(on: self) { [weak self] in self?.showError(message: $0) }
+        viewModel.authSuccess.observe(on: self) { [weak self] in self?.showMessageListVC(viewModel: $0) }
+    }
+    
     // MARK: - Actions
 
     @IBAction private func signInAction(_ sender: Any) {
-        authService.signInWithPresentingViewCotroller(self) { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                self.authService.saveState()
-                self.showMessageListVC()
-            }
+        viewModel.didSelectSignIn()
+    }
+
+    private func presentAuthorizationRequest(_ request: OIDAuthorizationRequest?) {
+        guard let request = request else { return }
+        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+
+        appDelegate?.currentAuthorizationFlow =
+        OIDAuthState.authState(byPresenting: request, presenting: self) { [weak self] state, error in
+            self?.viewModel.authStateResponse(authState: state, error: error)
         }
     }
 
-    @IBAction func testRequestAction(_ sender: Any) {
-    }
-
-    private func showMessageListVC() {
+    private func showMessageListVC(viewModel: MessageListViewModel?) {
+        guard let viewModel = viewModel else { return }
         let viewController = MessageListViewController()
-        let networkService = GmailNetworkService(authorizer: authService.authorizer!, parser: Parser())
-        let gmailMessageProvider = GmailMessageProvider(networkService: networkService)
-        
-        let viewModel = DefaultMessageListViewModel(messageProvider: gmailMessageProvider,
-                                                    userID: authService.userID!)
         viewController.viewModel = viewModel
-        navigationController?.pushViewController(viewController, animated: true)
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true)
     }
 }
 

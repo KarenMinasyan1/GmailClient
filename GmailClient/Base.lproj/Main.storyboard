@@ -23,21 +23,12 @@
                                     <action selector="signInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ayy-or-tQ4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5J-HD-9uz">
-                                <rect key="frame" x="164" y="488" width="86" height="30"/>
-                                <state key="normal" title="TestRequest"/>
-                                <connections>
-                                    <action selector="testRequestAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpy-Kt-OxY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8Zw-EZ-xOZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="e3D-Al-3d8"/>
                             <constraint firstItem="8Zw-EZ-xOZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hAw-yY-wOa"/>
-                            <constraint firstItem="z5J-HD-9uz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qwQ-FK-Fse"/>
-                            <constraint firstItem="z5J-HD-9uz" firstAttribute="top" secondItem="8Zw-EZ-xOZ" secondAttribute="bottom" constant="25" id="vjn-e5-QwG"/>
                         </constraints>
                     </view>
                 </viewController>
