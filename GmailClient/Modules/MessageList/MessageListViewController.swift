@@ -13,7 +13,7 @@ final class MessageListViewController: UIViewController {
     var viewModel: MessageListViewModel!
 
     // TableView
-    private var tableView: UITableView!
+    private var tableView = UITableView()
     private var dataSource: UITableViewDiffableDataSource<Int, String>!
     private static let cellReuseID = "reuse_id"
 
@@ -54,17 +54,15 @@ final class MessageListViewController: UIViewController {
 
 private extension MessageListViewController {
     func configureTableView() {
-        tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.cellReuseID)
-        tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         tableView.delegate = self
-        view.addSubview(tableView)
+        view.addSubviewWithLayoutToBounds(subView: tableView)
     }
 
     func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<Int, String>(tableView: tableView, cellProvider: { tableView, indexPath, messageID in
             let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellReuseID, for: indexPath)
-            cell.textLabel?.text = messageID
+            cell.textLabel?.text = "\(indexPath.row + 1). \(messageID)"
             return cell
         })
     }
@@ -82,5 +80,6 @@ private extension MessageListViewController {
 extension MessageListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectItem(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

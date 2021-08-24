@@ -21,9 +21,9 @@ final class GmailMessageProvider: MessageProviderProtocol {
         }
     }
 
-    func messageInfo(userID: String, messageID: String, completion: @escaping ResultCallback<String>) {
+    func messageInfo(userID: String, messageID: String, completion: @escaping ResultCallback<FullMessageResponse>) {
         let request = GmailRequestProvider.messageInfo(userID: userID, messageID: messageID).request
-        networkService.load(request) { (result: Result<String, NetworkError>) in
+        networkService.load(request) { (result: Result<FullMessageResponse, NetworkError>) in
             completion(result)
         }
     }

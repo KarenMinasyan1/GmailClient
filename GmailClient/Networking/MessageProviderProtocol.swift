@@ -9,5 +9,5 @@ typealias ResultCallback<T> = (Result<T, NetworkError>) -> Void
 
 protocol MessageProviderProtocol {
     func messageList(userID: String, completion: @escaping ResultCallback<MessagesResponse>)
-    func messageInfo(userID: String, messageID: String, completion: @escaping ResultCallback<String>)
+    func messageInfo(userID: String, messageID: String, completion: @escaping ResultCallback<FullMessageResponse>)
 }

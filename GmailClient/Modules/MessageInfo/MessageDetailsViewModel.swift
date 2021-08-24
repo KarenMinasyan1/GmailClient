@@ -7,15 +7,13 @@
 
 import Foundation
 
-import Foundation
-
 protocol MessageDetailsViewModelInput {
     func viewDidLoad()
 }
 
 protocol MessageDetailsViewModelOutput {
-    var testData: Observable<String> { get }
-    var errorMessage: Observable<String?> { get }
+    var messageInfo: Observable<MessageInfo?> { get }
+    var errorMessage: Observable<String> { get }
     var loading: Observable<Bool> { get }
 }
 
@@ -29,8 +27,8 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
 
     // Output
 
-    var testData: Observable<String> = Observable("")
-    var errorMessage: Observable<String?> = Observable(nil)
+    var messageInfo: Observable<MessageInfo?> = Observable(nil)
+    var errorMessage: Observable<String> = Observable("")
     var loading: Observable<Bool> = Observable(false)
 
     init(messageProvider: MessageProviderProtocol,
@@ -50,12 +48,11 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
     // Private
 
     private func loadMessage() {
-        provider.messageInfo(userID: userID, messageID: messageID) { [weak self] (result: Result<String, NetworkError>) in
+        provider.messageInfo(userID: userID, messageID: messageID) { [weak self] (result: Result<FullMessageResponse, NetworkError>) in
             guard let self = self else { return }
             switch result {
-            case .success(let stringValue):
-                self.testData.value = stringValue
-                print(stringValue)
+            case .success(let fullMessage):
+                self.messageInfo.value = MessageInfo.convert(fullMessage: fullMessage)
             case .failure(let error):
                 self.errorMessage.value = "Failed to load message" // TODO- better handle
                 print(error.localizedDescription)
