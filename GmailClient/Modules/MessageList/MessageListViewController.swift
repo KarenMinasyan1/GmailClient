@@ -82,6 +82,7 @@ private extension MessageListViewController {
     }
 
     func applySnapshotWith(ids: [String]) {
+        if ids.isEmpty { return }
         var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
         snapshot.appendSections([0])
         snapshot.appendItems(ids)
