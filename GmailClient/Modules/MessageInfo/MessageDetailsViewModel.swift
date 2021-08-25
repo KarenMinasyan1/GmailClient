@@ -14,7 +14,6 @@ protocol MessageDetailsViewModelInput {
 protocol MessageDetailsViewModelOutput {
     var messageInfo: Observable<MessageInfo?> { get }
     var errorMessage: Observable<String> { get }
-    var loading: Observable<Bool> { get }
 }
 
 protocol MessageDetailsViewModel: MessageDetailsViewModelInput, MessageDetailsViewModelOutput {}
@@ -30,7 +29,6 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
 
     var messageInfo: Observable<MessageInfo?> = Observable(nil)
     var errorMessage: Observable<String> = Observable("")
-    var loading: Observable<Bool> = Observable(false)
 
     init(messageProvider: MessageProvider,
          storageProvider: MessageStorageProvider,
@@ -65,7 +63,7 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
     }
 
     private func loadMessageFromNetwork() {
-        networkProvider.messageInfo(userID: userID, messageID: messageID) { [weak self] (result: Result<FullMessageResponse, NetworkError>) in
+        networkProvider.messageInfo(messageID: messageID) { [weak self] (result: Result<FullMessageResponse, NetworkError>) in
             guard let self = self else { return }
             switch result {
             case .success(let fullMessage):

@@ -8,7 +8,7 @@
 import AppAuth
 import GTMAppAuth
 
-final class GoogleAuthorizationService {
+final class GoogleAuthorizationService: AuthorizationService {
 
     // Add your clientID and redirectURI
     private let clientID = ""
@@ -18,8 +18,10 @@ final class GoogleAuthorizationService {
     static let authorizerKey = "google_authorizer_key"
 
     var authorizer: GTMAppAuthFetcherAuthorization?
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
 
-    func authorizationRequest(completion: @escaping ResultCallback<OIDAuthorizationRequest>) {
+    func presentAuthorizationIn(viewController: UIViewController,
+                                completion: @escaping ResultCallback<MessageProvider>) {
         let issuerURL = URL(string: issuer)!
         let redirectURIURL = URL(string: redirectURI)!
 
@@ -40,11 +42,25 @@ final class GoogleAuthorizationService {
                                                   redirectURL: redirectURIURL,
                                                   responseType: OIDResponseTypeCode,
                                                   additionalParameters: nil)
-            completion(.success(request))
+
+            self.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: viewController) { [weak self] authState, error in
+                guard let self = self else { return }
+                if let error = error {
+                    print(error) // No need to handle the error (User cancel error)
+                    return
+                }
+
+                let authorizer = GTMAppAuthFetcherAuthorization(authState: authState!)
+                self.saveState(authorizer: authorizer)
+                self.authorizer = authorizer
+                let networkService = GmailNetworkService(authorizer: authorizer, parser: Parser())
+                let provider = GmailMessageProvider(userID: authorizer.userID!, networkService: networkService)
+                completion(.success(provider))
+            }
         }
     }
 
-    func saveState(authorizer: GTMAppAuthFetcherAuthorization) {
+    private func saveState(authorizer: GTMAppAuthFetcherAuthorization) {
         if authorizer.canAuthorize() {
             GTMAppAuthFetcherAuthorization.save(authorizer, toKeychainForName: Self.authorizerKey)
         }

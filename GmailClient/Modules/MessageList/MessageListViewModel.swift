@@ -18,7 +18,6 @@ protocol MessageListViewModelOutput {
     var selectMessage: Observable<MessageDetailsViewModel?> { get }
     var errorMessage: Observable<String> { get }
     var logout: Observable<SignInViewModel?> { get }
-    var loading: Observable<Bool> { get }
 }
 
 protocol MessageListViewModel: MessageListViewModelInput, MessageListViewModelOutput {}
@@ -35,7 +34,6 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     var selectMessage: Observable<MessageDetailsViewModel?> = Observable(nil)
     var errorMessage: Observable<String> = Observable("")
     var logout: Observable<SignInViewModel?> = Observable(nil)
-    var loading: Observable<Bool> = Observable(false)
 
     init(messageProvider: MessageProvider,
          storageProvider: MessageStorageProvider,
@@ -62,7 +60,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     func logoutTap() {
         GoogleAuthorizationService.removeState()
         storageProvider.clearStorage()
-        let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
+        let viewModel = DefaultSignInViewModel()
         logout.value = viewModel
     }
 
@@ -82,7 +80,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     }
     
     private func loadMessageListFromNetwork() {
-        networkProvider.messageList(userID: userID) { [weak self] (result: Result<MessagesResponse, NetworkError>) in
+        networkProvider.messageList { [weak self] (result: Result<MessagesResponse, NetworkError>) in
             guard let self = self else { return }
             switch result {
             case .success(let messagesResponse):

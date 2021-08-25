@@ -6,17 +6,13 @@
 //
 
 import Foundation
-import AppAuth
-import GTMAppAuth
 
 protocol SignInViewModelInput {
-    func didSelectSignIn()
-    func authStateResponse(authState: OIDAuthState?, error: Error?)
+    func authStateResponse(result: Result<MessageProvider, NetworkError>)
 }
 
 protocol SignInViewModelOutput {
     var authSuccess: Observable<MessageListViewModel?> { get }
-    var authRequest: Observable<OIDAuthorizationRequest?> { get }
     var errorMessage: Observable<String> { get }
 }
 
@@ -24,48 +20,22 @@ protocol SignInViewModel: SignInViewModelInput, SignInViewModelOutput {}
 
 final class DefaultSignInViewModel: SignInViewModel {
 
-    let authService: GoogleAuthorizationService
-
     // Output
 
     var authSuccess: Observable<MessageListViewModel?> = Observable(nil)
-    var authRequest: Observable<OIDAuthorizationRequest?> = Observable(nil)
     var errorMessage: Observable<String> = Observable("")
-
-    init(authService: GoogleAuthorizationService) {
-        self.authService = authService
-    }
 
     // Input
 
-    func didSelectSignIn() {
-        authService.authorizationRequest { [weak self] (result: Result<OIDAuthorizationRequest, NetworkError>) in
-            guard let self = self else { return }
-            switch result {
-            case let .success(request):
-                self.authRequest.value = request
-            case let .failure(error):
-                self.errorMessage.value = error.localizedDescription
-                print(error.localizedDescription)
-            }
+    func authStateResponse(result: Result<MessageProvider, NetworkError>) {
+        switch result {
+        case .success(let provider):
+            let viewModel = DefaultMessageListViewModel(messageProvider: provider,
+                                                        storageProvider: CoreDataMessageStorageProvider(),
+                                                        userID: provider.userID)
+            authSuccess.value = viewModel
+        case .failure(let error):
+            errorMessage.value = error.localizedDescription
         }
-    }
-
-    func authStateResponse(authState: OIDAuthState?, error: Error?) {
-        if let error = error {
-            // No error display required (User cancel error)
-            print(error)
-            return
-        }
-
-        let authorizer = GTMAppAuthFetcherAuthorization(authState: authState!)
-        self.authService.saveState(authorizer: authorizer)
-
-        let networkService = GmailNetworkService(authorizer: authorizer, parser: Parser())
-        let gmailMessageProvider = GmailMessageProvider(networkService: networkService)
-        let viewModel = DefaultMessageListViewModel(messageProvider: gmailMessageProvider,
-                                                    storageProvider: CoreDataMessageStorageProvider(),
-                                                    userID: authorizer.userID!)
-        authSuccess.value = viewModel
     }
 }

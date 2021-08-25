@@ -9,19 +9,21 @@ import Foundation
 
 final class GmailMessageProvider: MessageProvider {
     private let networkService: GmailNetworkService
+    let userID: String
 
-    init(networkService: GmailNetworkService) {
+    init(userID: String, networkService: GmailNetworkService) {
+        self.userID = userID
         self.networkService = networkService
     }
 
-    func messageList(userID: String, completion: @escaping ResultCallback<MessagesResponse>) {
+    func messageList(completion: @escaping ResultCallback<MessagesResponse>) {
         let request = GmailRequestProvider.messageList(userID: userID).request
         networkService.load(request) { (result: Result<MessagesResponse, NetworkError>) in
             completion(result)
         }
     }
 
-    func messageInfo(userID: String, messageID: String, completion: @escaping ResultCallback<FullMessageResponse>) {
+    func messageInfo(messageID: String, completion: @escaping ResultCallback<FullMessageResponse>) {
         let request = GmailRequestProvider.messageInfo(userID: userID, messageID: messageID).request
         networkService.load(request) { (result: Result<FullMessageResponse, NetworkError>) in
             completion(result)

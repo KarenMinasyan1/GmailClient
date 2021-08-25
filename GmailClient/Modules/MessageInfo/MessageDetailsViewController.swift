@@ -28,7 +28,6 @@ final class MessageDetailsViewController: ViewController {
     private func bindViewModel() {
         viewModel.messageInfo.observe(on: self) { [weak self] in self?.setupMessageInfo($0) }
         viewModel.errorMessage.observe(on: self) { [weak self] in self?.showError(message: $0) }
-        viewModel.loading.observe(on: self) { [weak self] in self?.showLoading($0) }
     }
 
     private func configureHierarhies() {
@@ -66,10 +65,6 @@ final class MessageDetailsViewController: ViewController {
         senderLabel.text = info.from
         subjectLabel.text = info.subject
         bodyLabel.text = info.body
-    }
-
-    private func showLoading(_ loading: Bool) {
-        
     }
 }
 

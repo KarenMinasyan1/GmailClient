@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if let authorizer = GTMAppAuthFetcherAuthorization(fromKeychainForName: GoogleAuthorizationService.authorizerKey) {
             let networkService = GmailNetworkService(authorizer: authorizer, parser: Parser())
-            let gmailMessageProvider = GmailMessageProvider(networkService: networkService)
+            let gmailMessageProvider = GmailMessageProvider(userID: authorizer.userID!,
+                                                            networkService: networkService)
             let viewModel = DefaultMessageListViewModel(messageProvider: gmailMessageProvider,
                                                         storageProvider: CoreDataMessageStorageProvider(),
                                                         userID: authorizer.userID!)
@@ -30,9 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             messageListVC.viewModel = viewModel
             viewController = UINavigationController(rootViewController: messageListVC)
         } else {
-            viewController = SignInViewController()
-            let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
-            (viewController as! SignInViewController).viewModel = viewModel
+            let signInVC = SignInViewController()
+            let viewModel = DefaultSignInViewModel()
+            let authService = GoogleAuthorizationService()
+            signInVC.viewModel = viewModel
+            signInVC.authService = authService
+            viewController = signInVC
         }
 
         /// 4. Set the root view controller of the window with your view controller

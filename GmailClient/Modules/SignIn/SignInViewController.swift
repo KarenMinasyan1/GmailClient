@@ -6,12 +6,12 @@
 //
 
 import UIKit
-import AppAuth
+import GTMAppAuth
 
 final class SignInViewController: ViewController {
 
     var viewModel: SignInViewModel!
-    var currentAuthorizationFlow: OIDExternalUserAgentSession?
+    var authService: AuthorizationService!
 
     private let signInButton = UIButton()
 
@@ -22,7 +22,6 @@ final class SignInViewController: ViewController {
     }
 
     private func bindViewModel() {
-        viewModel.authRequest.observe(on: self) { [weak self] in self?.presentAuthorizationRequest($0) }
         viewModel.errorMessage.observe(on: self) { [weak self] in self?.showError(message: $0) }
         viewModel.authSuccess.observe(on: self) { [weak self] in self?.showMessageListVC(viewModel: $0) }
     }
@@ -36,14 +35,8 @@ final class SignInViewController: ViewController {
     // MARK: - Actions
 
     @objc private func signInAction(_ sender: Any) {
-        viewModel.didSelectSignIn()
-    }
-
-    private func presentAuthorizationRequest(_ request: OIDAuthorizationRequest?) {
-        guard let request = request else { return }
-
-        currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: self) { [weak self] state, error in
-            self?.viewModel.authStateResponse(authState: state, error: error)
+        authService.presentAuthorizationIn(viewController: self) { [weak self] (result: Result<MessageProvider, NetworkError>) in
+            self?.viewModel.authStateResponse(result: result)
         }
     }
 
