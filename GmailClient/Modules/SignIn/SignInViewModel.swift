@@ -69,6 +69,7 @@ final class DefaultSignInViewModel: SignInViewModel {
         let networkService = GmailNetworkService(authorizer: authorizer, parser: Parser())
         let gmailMessageProvider = GmailMessageProvider(networkService: networkService)
         let viewModel = DefaultMessageListViewModel(messageProvider: gmailMessageProvider,
+                                                    storageProvider: CoreDataMessageStorageProvider(),
                                                     userID: authorizer.userID!)
         authSuccess.value = viewModel
     }

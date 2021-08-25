@@ -25,7 +25,8 @@ protocol MessageListViewModel: MessageListViewModelInput, MessageListViewModelOu
 
 final class DefaultMessageListViewModel: MessageListViewModel {
 
-    private let provider: MessageProvider
+    private let networkProvider: MessageProvider
+    private let storageProvider: MessageStorageProvider
     private let userID: String
 
     // Output
@@ -37,8 +38,10 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     var loading: Observable<Bool> = Observable(false)
 
     init(messageProvider: MessageProvider,
+         storageProvider: MessageStorageProvider,
          userID: String) {
-        self.provider = messageProvider
+        self.networkProvider = messageProvider
+        self.storageProvider = storageProvider
         self.userID = userID
     }
 
@@ -49,7 +52,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     }
 
     func didSelectItem(at index: Int) {
-        let viewModel = DefaultMessageDetailsViewModel(messageProvider: provider,
+        let viewModel = DefaultMessageDetailsViewModel(messageProvider: networkProvider,
                                                        storageProvider: CoreDataMessageStorageProvider(),
                                                        messageID: messages.value[index],
                                                        userID: userID)
@@ -62,13 +65,29 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     }
 
     // Private
-
     private func loadMessageList() {
-        provider.messageList(userID: userID) { [weak self] (result: Result<MessagesResponse, NetworkError>) in
+        storageProvider.messageList(userID: userID) { [weak self] (result: Result<[String], CoreDataStorageError>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let ids):
+                self.messages.value = ids
+            case .failure(let error):
+                print(error.localizedDescription)
+                // If message is missing in storage load from network
+                self.loadMessageListFromNetwork()
+            }
+        }
+    }
+    
+    private func loadMessageListFromNetwork() {
+        networkProvider.messageList(userID: userID) { [weak self] (result: Result<MessagesResponse, NetworkError>) in
             guard let self = self else { return }
             switch result {
             case .success(let messagesResponse):
-                self.messages.value = messagesResponse.messages.map({ $0.id })
+                let messageIDs = messagesResponse.messages.map({ $0.id })
+                self.messages.value = messageIDs
+                // Save ids to storage
+                self.storageProvider.save(messageIds: messageIDs)
             case .failure(let error):
                 print(error.localizedDescription)
                 self.errorMessage.value = "Can't load messages"

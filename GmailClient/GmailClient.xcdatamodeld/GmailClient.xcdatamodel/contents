@@ -6,8 +6,8 @@
         <attribute name="sender" optional="YES" attributeType="String"/>
         <attribute name="subject" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="MessageListEntity" representedClassName="MessageListEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="ids" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+    <entity name="MessageListEntity" representedClassName=".MessageListEntity" syncable="YES">
+        <attribute name="ids" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName=".[String]"/>
     </entity>
     <elements>
         <element name="MessageEntity" positionX="-63" positionY="-18" width="128" height="89"/>

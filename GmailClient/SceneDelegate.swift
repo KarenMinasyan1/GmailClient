@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let gmailMessageProvider = GmailMessageProvider(networkService: networkService)
 
             let viewModel = DefaultMessageListViewModel(messageProvider: gmailMessageProvider,
+                                                        storageProvider: CoreDataMessageStorageProvider(),
                                                         userID: authorizer.userID!)
             let messageListVC = MessageListViewController()
             messageListVC.viewModel = viewModel

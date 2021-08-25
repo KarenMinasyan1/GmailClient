@@ -11,6 +11,8 @@ typealias StorageCallback<T> = (Result<T, CoreDataStorageError>) -> Void
 
 protocol MessageStorageProvider {
     func message(id: String, completion: @escaping StorageCallback<MessageInfo>)
+    func messageList(userID: String, completion: @escaping StorageCallback<[String]>)
+    func save(messageIds: [String])
     func save(messageInfo: MessageInfo)
 }
 
@@ -38,10 +40,39 @@ final class CoreDataMessageStorageProvider: MessageStorageProvider {
         }
     }
 
+    func messageList(userID: String, completion: @escaping StorageCallback<[String]>) {
+        coreDataStack.performBackgroundTask { context in
+            do {
+                let fetchRequest: NSFetchRequest = MessageListEntity.fetchRequest()
+
+                guard let entity = try context.fetch(fetchRequest).first else {
+                    completion(.failure(.dataMissing))
+                    return
+                }
+
+                completion(.success(entity.ids))
+            } catch {
+                completion(.failure(CoreDataStorageError.readError(error)))
+            }
+        }
+    }
+
     func save(messageInfo: MessageInfo) {
         coreDataStack.performBackgroundTask { context in
             do {
                 _ = messageInfo.toEntity(in: context)
+                try context.save()
+            } catch {
+                debugPrint("Unresolved error \(error), \((error as NSError).userInfo)")
+            }
+        }
+    }
+
+    func save(messageIds: [String]) {
+        coreDataStack.performBackgroundTask { context in
+            do {
+                let entity: MessageListEntity = .init(context: context)
+                entity.ids = messageIds
                 try context.save()
             } catch {
                 debugPrint("Unresolved error \(error), \((error as NSError).userInfo)")
