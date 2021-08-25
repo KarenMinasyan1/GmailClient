@@ -14,14 +14,12 @@ struct MessageInfo {
     var body: String
 }
 
-// TODO: -- change
 extension MessageInfo {
-    static func convert(fullMessage: FullMessageResponse) -> MessageInfo {
-        let id = fullMessage.id ?? ""
-        let from = fullMessage.payload?.headers?.first { $0.name == "From" }?.value ?? ""
-        let subject = fullMessage.payload?.headers?.first { $0.name == "Subject" }?.value ?? ""
-        var body = fullMessage.payload?.parts?.first { $0.mimeType == "text/plain" }?.body?.data ?? ""
+    init(fullMessage: FullMessageResponse) {
+        id = fullMessage.id ?? ""
+        from = fullMessage.payload?.headers?.first { $0.name == "From" }?.value ?? ""
+        subject = fullMessage.payload?.headers?.first { $0.name == "Subject" }?.value ?? ""
+        body = fullMessage.payload?.parts?.first { $0.mimeType == "text/plain" }?.body?.data ?? ""
         body = body.fromBase64URL() ?? ""
-        return MessageInfo(id: id, from: from, subject: subject, body: body)
     }
 }

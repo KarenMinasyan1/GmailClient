@@ -17,7 +17,7 @@ protocol MessageListViewModelOutput {
     var messages: Observable<[String]> { get }
     var selectMessage: Observable<MessageDetailsViewModel?> { get }
     var errorMessage: Observable<String> { get }
-    var logout: Observable<Bool> { get }
+    var logout: Observable<SignInViewModel?> { get }
     var loading: Observable<Bool> { get }
 }
 
@@ -34,7 +34,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     var messages: Observable<[String]> = Observable([])
     var selectMessage: Observable<MessageDetailsViewModel?> = Observable(nil)
     var errorMessage: Observable<String> = Observable("")
-    var logout: Observable<Bool> = Observable(false)
+    var logout: Observable<SignInViewModel?> = Observable(nil)
     var loading: Observable<Bool> = Observable(false)
 
     init(messageProvider: MessageProvider,
@@ -62,7 +62,8 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     func logoutTap() {
         GoogleAuthorizationService.removeState()
         storageProvider.clearStorage()
-        logout.value = true
+        let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
+        logout.value = viewModel
     }
 
     // Private

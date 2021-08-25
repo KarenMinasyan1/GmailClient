@@ -53,7 +53,7 @@ final class DefaultSignInViewModel: SignInViewModel {
 
     func authStateResponse(authState: OIDAuthState?, error: Error?) {
         if let error = error {
-            // No error display required (User cancel action)
+            // No error display required (User cancel error)
             print(error)
             return
         }

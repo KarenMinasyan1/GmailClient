@@ -69,7 +69,7 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let fullMessage):
-                let messageInfo = MessageInfo.convert(fullMessage: fullMessage)
+                let messageInfo = MessageInfo(fullMessage: fullMessage)
                 self.messageInfo.value = messageInfo
                 // Save message in storage
                 self.storageProvider.save(messageInfo: messageInfo)

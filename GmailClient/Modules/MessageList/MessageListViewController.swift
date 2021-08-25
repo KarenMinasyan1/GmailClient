@@ -31,7 +31,7 @@ final class MessageListViewController: ViewController {
         viewModel.errorMessage.observe(on: self) { [weak self] in self?.showError(message: $0) }
         viewModel.loading.observe(on: self) { [weak self] in self?.showLoading($0) }
         viewModel.selectMessage.observe(on: self) { [weak self] in self?.showMessageDetails(viewModel: $0) }
-        viewModel.logout.observe(on: self) { [weak self] in self?.logoutAction($0) }
+        viewModel.logout.observe(on: self) { [weak self] in self?.logoutAction(viewModel: $0) }
     }
 
     private func showLoading(_ loading: Bool) {
@@ -60,11 +60,9 @@ final class MessageListViewController: ViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func logoutAction(_ isLoggedOut: Bool) {
-        if isLoggedOut {
-            // TODO duplicate
+    func logoutAction(viewModel: SignInViewModel?) {
+        if let viewModel = viewModel {
             let viewController = SignInViewController()
-            let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
             viewController.viewModel = viewModel
             UIApplication.setRootView(viewController)
         }
