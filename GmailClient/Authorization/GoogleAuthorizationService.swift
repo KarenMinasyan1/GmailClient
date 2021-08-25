@@ -9,9 +9,12 @@ import AppAuth
 import GTMAppAuth
 
 final class GoogleAuthorizationService {
+
+    // Add your clientID and redirectURI
+    private let clientID = ""
+    private let redirectURI = ""
+
     private let issuer = "https://accounts.google.com"
-    private let clientID = "65055114135-qercr5c15qgkrpc0be47rgsmjq8a6c47.apps.googleusercontent.com"
-    private let redirectURI = "com.googleusercontent.apps.65055114135-qercr5c15qgkrpc0be47rgsmjq8a6c47:/oauthredirect"
     static let authorizerKey = "google_authorizer_key"
 
     var authorizer: GTMAppAuthFetcherAuthorization?

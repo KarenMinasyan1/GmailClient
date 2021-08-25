@@ -11,6 +11,7 @@ import AppAuth
 final class SignInViewController: ViewController {
 
     var viewModel: SignInViewModel!
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
 
     private let signInButton = UIButton()
 
@@ -40,10 +41,8 @@ final class SignInViewController: ViewController {
 
     private func presentAuthorizationRequest(_ request: OIDAuthorizationRequest?) {
         guard let request = request else { return }
-        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
 
-        appDelegate?.currentAuthorizationFlow =
-        OIDAuthState.authState(byPresenting: request, presenting: self) { [weak self] state, error in
+        currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: self) { [weak self] state, error in
             self?.viewModel.authStateResponse(authState: state, error: error)
         }
     }
