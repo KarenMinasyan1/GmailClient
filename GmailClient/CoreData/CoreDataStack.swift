@@ -60,7 +60,7 @@ final class CoreDataStack: NSObject {
             }
         }
     }
-    
+
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         persistentContainer.performBackgroundTask(block)
     }

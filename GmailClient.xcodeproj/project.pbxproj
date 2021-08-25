@@ -23,6 +23,7 @@
 		1C3524A826D63F1C00C2022A /* MessageListEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3524A626D63F1C00C2022A /* MessageListEntity+CoreDataClass.swift */; };
 		1C3524A926D63F1C00C2022A /* MessageListEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3524A726D63F1C00C2022A /* MessageListEntity+CoreDataProperties.swift */; };
 		1C35267026D6CF4100C2022A /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35266F26D6CF4100C2022A /* AuthorizationService.swift */; };
+		1C35267226D6D75700C2022A /* CoreDataMessageStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35267126D6D75700C2022A /* CoreDataMessageStorageProvider.swift */; };
 		1C507D3826D3916A0000464A /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C507D3726D3916A0000464A /* MessageList.swift */; };
 		1CFC2E9E26D17CB700739357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2E9D26D17CB700739357 /* AppDelegate.swift */; };
 		1CFC2EA026D17CB700739357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC2E9F26D17CB700739357 /* SceneDelegate.swift */; };
@@ -62,6 +63,7 @@
 		1C3524A626D63F1C00C2022A /* MessageListEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageListEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1C3524A726D63F1C00C2022A /* MessageListEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageListEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1C35266F26D6CF4100C2022A /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		1C35267126D6D75700C2022A /* CoreDataMessageStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMessageStorageProvider.swift; sourceTree = "<group>"; };
 		1C507D3726D3916A0000464A /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		1CFC2E9A26D17CB700739357 /* GmailClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GmailClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CFC2E9D26D17CB700739357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				1C3523B926D61B1800C2022A /* Entities */,
 				1C3523A626D6140D00C2022A /* CoreDataStack.swift */,
 				1C3523BC26D61CFE00C2022A /* MessageStorageProvider.swift */,
+				1C35267126D6D75700C2022A /* CoreDataMessageStorageProvider.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				1C3523B626D61AF700C2022A /* MessageEntity+CoreDataClass.swift in Sources */,
 				1CFC2EB726D2399100739357 /* MessageListViewController.swift in Sources */,
 				1C3523A226D5779F00C2022A /* UIApplication+RootView.swift in Sources */,
+				1C35267226D6D75700C2022A /* CoreDataMessageStorageProvider.swift in Sources */,
 				1C35201026D450CA00C2022A /* UIView+AddSubview.swift in Sources */,
 				1C507D3826D3916A0000464A /* MessageList.swift in Sources */,
 				1CFC2EA026D17CB700739357 /* SceneDelegate.swift in Sources */,
