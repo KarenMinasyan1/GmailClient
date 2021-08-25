@@ -66,5 +66,11 @@ final class MessageDetailsViewController: ViewController {
         subjectLabel.text = info.subject
         bodyLabel.text = info.body
     }
+
+    override func showAlert(title: String, message: String, preferredStyle: UIAlertController.Style, actionHandler: ((UIAlertAction) -> Void)?) {
+        super.showAlert(title: title, message: message, preferredStyle: preferredStyle) { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
 }
 

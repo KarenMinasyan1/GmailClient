@@ -40,7 +40,7 @@ final class MessageListViewController: ViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
 
-    @objc func logOutTap() {
+    @objc private func logOutTap() {
         let alertController = UIAlertController(title: "Are you sure you want to logout?", message: nil, preferredStyle: .actionSheet)
 
         let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in

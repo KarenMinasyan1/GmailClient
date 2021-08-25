@@ -208,9 +208,9 @@
 		1CFC2EBE26D25F1F00739357 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1CFC2EC126D2665600739357 /* GmailNetworkService.swift */,
 				1CFC2EBF26D263BB00739357 /* MessageProvider.swift */,
 				1CFC2EC326D26EB300739357 /* GmailMessageProvider.swift */,
+				1CFC2EC126D2665600739357 /* GmailNetworkService.swift */,
 				1C30976826D3C48C00C08710 /* NetworkError.swift */,
 			);
 			path = Networking;

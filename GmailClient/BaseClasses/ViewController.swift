@@ -15,9 +15,9 @@ class ViewController: UIViewController {
         }
     }
 
-    func showAlert(title: String = "", message: String, preferredStyle: UIAlertController.Style = .alert, completion: (() -> Void)? = nil) {
+    func showAlert(title: String = "", message: String, preferredStyle: UIAlertController.Style = .alert, actionHandler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        present(alert, animated: true, completion: completion)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: actionHandler))
+        present(alert, animated: true)
     }
 }

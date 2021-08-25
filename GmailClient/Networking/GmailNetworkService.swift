@@ -26,12 +26,12 @@ final class GmailNetworkService {
             guard let self = self else { return }
 
             if let error = error {
-                DispatchQueue.main.async { completion(.failure(.authorization(error: error))) }
+                completion(.failure(.authorization(error: error)))
                 return
             }
 
             guard let accessToken = accessToken else {
-                DispatchQueue.main.async { completion(.failure(.tokenMissing)) }
+                completion(.failure(.tokenMissing))
                 return
             }
 
@@ -40,12 +40,13 @@ final class GmailNetworkService {
             self.fetcherService.fetcher(with: urlRequest).beginFetch { data, error in
 
                 if let error = error {
-                    DispatchQueue.main.async { completion(.failure(.responseError(error: error))) }
+                    print(error)
+                    completion(.failure(.responseError(error: error)))
                     return
                 }
 
                 guard let data = data else {
-                    DispatchQueue.main.async { completion(.failure(.dataMissing)) }
+                    completion(.failure(.dataMissing))
                     return
                 }
 
