@@ -51,7 +51,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
 
     func didSelectItem(at index: Int) {
         let viewModel = DefaultMessageDetailsViewModel(messageProvider: networkProvider,
-                                                       storageProvider: CoreDataMessageStorageProvider(),
+                                                       storageProvider: CoreDataMessageProvider(),
                                                        messageID: messages.value[index],
                                                        userID: userID)
         selectMessage.value = viewModel

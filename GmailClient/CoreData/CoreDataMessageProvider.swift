@@ -7,7 +7,7 @@
 
 import CoreData
 
-final class CoreDataMessageStorageProvider: MessageStorageProvider {
+final class CoreDataMessageProvider: MessageStorageProvider {
 
     private let coreDataStack = CoreDataStack.shared
 

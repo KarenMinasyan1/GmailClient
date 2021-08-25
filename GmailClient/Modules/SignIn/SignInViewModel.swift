@@ -31,7 +31,7 @@ final class DefaultSignInViewModel: SignInViewModel {
         switch result {
         case .success(let provider):
             let viewModel = DefaultMessageListViewModel(messageProvider: provider,
-                                                        storageProvider: CoreDataMessageStorageProvider(),
+                                                        storageProvider: CoreDataMessageProvider(),
                                                         userID: provider.userID)
             authSuccess.value = viewModel
         case .failure(let error):
