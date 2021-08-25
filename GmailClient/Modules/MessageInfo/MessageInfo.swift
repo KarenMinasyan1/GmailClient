@@ -8,6 +8,7 @@
 import Foundation
 
 struct MessageInfo {
+    var id: String
     var from: String
     var subject: String
     var body: String
@@ -16,10 +17,11 @@ struct MessageInfo {
 // TODO: -- change
 extension MessageInfo {
     static func convert(fullMessage: FullMessageResponse) -> MessageInfo {
+        let id = fullMessage.id ?? ""
         let from = fullMessage.payload?.headers?.first { $0.name == "From" }?.value ?? ""
         let subject = fullMessage.payload?.headers?.first { $0.name == "Subject" }?.value ?? ""
         var body = fullMessage.payload?.parts?.first { $0.mimeType == "text/plain" }?.body?.data ?? ""
         body = body.fromBase64URL() ?? ""
-        return MessageInfo(from: from, subject: subject, body: body)
+        return MessageInfo(id: id, from: from, subject: subject, body: body)
     }
 }

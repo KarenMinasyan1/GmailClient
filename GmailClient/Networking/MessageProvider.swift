@@ -7,7 +7,7 @@
 
 typealias ResultCallback<T> = (Result<T, NetworkError>) -> Void
 
-protocol MessageProviderProtocol {
+protocol MessageProvider {
     func messageList(userID: String, completion: @escaping ResultCallback<MessagesResponse>)
     func messageInfo(userID: String, messageID: String, completion: @escaping ResultCallback<FullMessageResponse>)
 }

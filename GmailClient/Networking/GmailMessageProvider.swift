@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GmailMessageProvider: MessageProviderProtocol {
+final class GmailMessageProvider: MessageProvider {
     private let networkService: GmailNetworkService
 
     init(networkService: GmailNetworkService) {

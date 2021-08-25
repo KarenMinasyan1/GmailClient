@@ -21,7 +21,8 @@ protocol MessageDetailsViewModel: MessageDetailsViewModelInput, MessageDetailsVi
 
 final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
 
-    private let provider: MessageProviderProtocol
+    private let storageProvider: MessageStorageProvider
+    private let networkProvider: MessageProvider
     private let messageID: String
     private let userID: String
 
@@ -31,10 +32,12 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
     var errorMessage: Observable<String> = Observable("")
     var loading: Observable<Bool> = Observable(false)
 
-    init(messageProvider: MessageProviderProtocol,
+    init(messageProvider: MessageProvider,
+         storageProvider: MessageStorageProvider,
          messageID: String,
          userID: String) {
-        self.provider = messageProvider
+        self.networkProvider = messageProvider
+        self.storageProvider = storageProvider
         self.messageID = messageID
         self.userID = userID
     }
@@ -48,11 +51,28 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
     // Private
 
     private func loadMessage() {
-        provider.messageInfo(userID: userID, messageID: messageID) { [weak self] (result: Result<FullMessageResponse, NetworkError>) in
+        storageProvider.message(id: messageID) { [weak self] (result: Result<MessageInfo, CoreDataStorageError>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let message):
+                self.messageInfo.value = message
+            case .failure(let error):
+                print(error.localizedDescription)
+                // If message is missing in storage load from network
+                self.loadMessageFromNetwork()
+            }
+        }
+    }
+
+    private func loadMessageFromNetwork() {
+        networkProvider.messageInfo(userID: userID, messageID: messageID) { [weak self] (result: Result<FullMessageResponse, NetworkError>) in
             guard let self = self else { return }
             switch result {
             case .success(let fullMessage):
-                self.messageInfo.value = MessageInfo.convert(fullMessage: fullMessage)
+                let messageInfo = MessageInfo.convert(fullMessage: fullMessage)
+                self.messageInfo.value = messageInfo
+                // Save message in storage
+                self.storageProvider.save(messageInfo: messageInfo)
             case .failure(let error):
                 self.errorMessage.value = "Failed to load message" // TODO- better handle
                 print(error.localizedDescription)

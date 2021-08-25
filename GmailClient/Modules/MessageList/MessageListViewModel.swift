@@ -25,7 +25,7 @@ protocol MessageListViewModel: MessageListViewModelInput, MessageListViewModelOu
 
 final class DefaultMessageListViewModel: MessageListViewModel {
 
-    private let provider: MessageProviderProtocol
+    private let provider: MessageProvider
     private let userID: String
 
     // Output
@@ -36,7 +36,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     var logout: Observable<Bool> = Observable(false)
     var loading: Observable<Bool> = Observable(false)
 
-    init(messageProvider: MessageProviderProtocol,
+    init(messageProvider: MessageProvider,
          userID: String) {
         self.provider = messageProvider
         self.userID = userID
@@ -50,6 +50,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
 
     func didSelectItem(at index: Int) {
         let viewModel = DefaultMessageDetailsViewModel(messageProvider: provider,
+                                                       storageProvider: CoreDataMessageStorageProvider(),
                                                        messageID: messages.value[index],
                                                        userID: userID)
         selectMessage.value = viewModel
