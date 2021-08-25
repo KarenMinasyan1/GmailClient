@@ -39,10 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             viewController = signInVC
         }
 
-        /// 4. Set the root view controller of the window with your view controller
         window.rootViewController = viewController
 
-        /// 5. Set the window and call makeKeyAndVisible()
         self.window = window
         window.makeKeyAndVisible()
     }

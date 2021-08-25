@@ -5,8 +5,6 @@
 //  Created by Karen Minasyan on 23.08.21.
 //
 
-import Foundation
-
 protocol MessageListViewModelInput {
     func viewDidLoad()
     func didSelectItem(at index: Int)

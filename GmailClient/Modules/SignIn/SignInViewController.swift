@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import GTMAppAuth
 
 final class SignInViewController: ViewController {
 
