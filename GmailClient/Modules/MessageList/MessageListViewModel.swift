@@ -72,7 +72,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
             case .success(let ids):
                 self.messages.value = ids
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
                 // If message is missing in storage load from network
                 self.loadMessageListFromNetwork()
             }
@@ -89,8 +89,8 @@ final class DefaultMessageListViewModel: MessageListViewModel {
                 // Save ids to storage
                 self.storageProvider.save(messageIds: messageIDs)
             case .failure(let error):
-                print(error.localizedDescription)
-                self.errorMessage.value = "Can't load messages"
+                print(error)
+                self.errorMessage.value = error.localizedDescription
             }
         }
     }

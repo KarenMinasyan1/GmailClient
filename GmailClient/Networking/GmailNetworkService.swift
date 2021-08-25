@@ -40,7 +40,7 @@ final class GmailNetworkService {
             self.fetcherService.fetcher(with: urlRequest).beginFetch { data, error in
 
                 if let error = error {
-                    DispatchQueue.main.async { completion(.failure(.responseError(error: error)))}
+                    DispatchQueue.main.async { completion(.failure(.responseError(error: error))) }
                     return
                 }
 

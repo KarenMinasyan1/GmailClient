@@ -15,21 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zw-EZ-xOZ">
-                                <rect key="frame" x="141" y="433" width="132" height="30"/>
-                                <state key="normal" title="Sign in with Google"/>
-                                <connections>
-                                    <action selector="signInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ayy-or-tQ4"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="8Zw-EZ-xOZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="e3D-Al-3d8"/>
-                            <constraint firstItem="8Zw-EZ-xOZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hAw-yY-wOa"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

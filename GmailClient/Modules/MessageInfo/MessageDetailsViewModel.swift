@@ -74,8 +74,8 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
                 // Save message in storage
                 self.storageProvider.save(messageInfo: messageInfo)
             case .failure(let error):
-                self.errorMessage.value = "Failed to load message" // TODO- better handle
-                print(error.localizedDescription)
+                self.errorMessage.value = error.localizedDescription
+                print(error)
             }
         }
     }

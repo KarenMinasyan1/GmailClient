@@ -12,9 +12,12 @@ final class SignInViewController: ViewController {
 
     var viewModel: SignInViewModel!
 
+    private let signInButton = UIButton()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
+        setupSignInButton()
     }
 
     private func bindViewModel() {
@@ -22,10 +25,16 @@ final class SignInViewController: ViewController {
         viewModel.errorMessage.observe(on: self) { [weak self] in self?.showError(message: $0) }
         viewModel.authSuccess.observe(on: self) { [weak self] in self?.showMessageListVC(viewModel: $0) }
     }
-    
+
+    private func setupSignInButton() {
+        view.addSubviewWithLayoutToCenter(subView: signInButton)
+        signInButton.setImage(UIImage(named: "google_sign_in"), for: .normal)
+        signInButton.addTarget(self, action: #selector(signInAction), for: .touchUpInside)
+    }
+
     // MARK: - Actions
 
-    @IBAction private func signInAction(_ sender: Any) {
+    @objc private func signInAction(_ sender: Any) {
         viewModel.didSelectSignIn()
     }
 
