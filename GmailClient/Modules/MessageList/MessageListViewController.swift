@@ -55,7 +55,7 @@ final class MessageListViewController: ViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func logoutAction(viewModel: SignInViewModel?) {
+    private func logoutAction(viewModel: SignInViewModel?) {
         if let viewModel = viewModel {
             let viewController = SignInViewController()
             viewController.authService = GoogleAuthorizationService()

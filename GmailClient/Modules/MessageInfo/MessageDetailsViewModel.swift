@@ -49,7 +49,7 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
     // Private
 
     private func loadMessage() {
-        storageProvider.message(id: messageID) { [weak self] (result: Result<MessageInfo, CoreDataStorageError>) in
+        storageProvider.message(id: messageID) { [weak self] (result: Result<MessageInfo, StorageError>) in
             guard let self = self else { return }
             switch result {
             case .success(let message):

@@ -66,7 +66,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
 
     // Private
     private func loadMessageList() {
-        storageProvider.messageList(userID: userID) { [weak self] (result: Result<[String], CoreDataStorageError>) in
+        storageProvider.messageList(userID: userID) { [weak self] (result: Result<[String], StorageError>) in
             guard let self = self else { return }
             switch result {
             case .success(let ids):

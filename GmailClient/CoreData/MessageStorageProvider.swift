@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias StorageCallback<T> = (Result<T, CoreDataStorageError>) -> Void
+typealias StorageCallback<T> = (Result<T, StorageError>) -> Void
 
 protocol MessageStorageProvider {
     func message(id: String, completion: @escaping StorageCallback<MessageInfo>)

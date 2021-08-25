@@ -9,11 +9,11 @@ import UIKit
 
 final class MessageDetailsViewController: ViewController {
 
-    let scrollView = UIScrollView()
-    let stackView = UIStackView()
-    let senderLabel = UILabel()
-    let subjectLabel = UILabel()
-    let bodyLabel = UILabel()
+    private let scrollView = UIScrollView()
+    private let stackView = UIStackView()
+    private let senderLabel = UILabel()
+    private let subjectLabel = UILabel()
+    private let bodyLabel = UILabel()
 
     var viewModel: MessageDetailsViewModel!
 
@@ -42,10 +42,9 @@ final class MessageDetailsViewController: ViewController {
         stackView.addArrangedSubview(senderLabel)
         stackView.addArrangedSubview(subjectLabel)
         stackView.addArrangedSubview(bodyLabel)
-        
+
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-
         stackView.spacing = 16
         stackView.axis = .vertical
     }

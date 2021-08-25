@@ -7,7 +7,7 @@
 
 import CoreData
 
-enum CoreDataStorageError: Error {
+enum StorageError: Error {
     case dataMissing
     case readError(Error)
     case saveError(Error)

@@ -24,7 +24,7 @@ final class CoreDataMessageProvider: MessageStorageProvider {
 
                 completion(.success(entity.toMessageInfo()))
             } catch {
-                completion(.failure(CoreDataStorageError.readError(error)))
+                completion(.failure(StorageError.readError(error)))
             }
         }
     }
@@ -41,7 +41,7 @@ final class CoreDataMessageProvider: MessageStorageProvider {
 
                 completion(.success(entity.ids))
             } catch {
-                completion(.failure(CoreDataStorageError.readError(error)))
+                completion(.failure(StorageError.readError(error)))
             }
         }
     }
