@@ -16,18 +16,13 @@ final class GoogleAuthorizationService {
 
     var authorizer: GTMAppAuthFetcherAuthorization?
 
-    var userID: String? {
-        authorizer?.userID
-    }
-
     func authorizationRequest(completion: @escaping ResultCallback<OIDAuthorizationRequest>) {
         let issuerURL = URL(string: issuer)!
         let redirectURIURL = URL(string: redirectURI)!
 
         OIDAuthorizationService.discoverConfiguration(forIssuer: issuerURL) { [weak self] configuration, error in
             guard let configuration = configuration, let self = self else {
-                completion(.failure(.dataMissing)) //TODO maybe change error type
-                print(error.debugDescription)
+                completion(.failure(.invalidRequest))
                 return
             }
 

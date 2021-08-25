@@ -14,6 +14,7 @@ protocol MessageStorageProvider {
     func messageList(userID: String, completion: @escaping StorageCallback<[String]>)
     func save(messageIds: [String])
     func save(messageInfo: MessageInfo)
+    func clearStorage()
 }
 
 import CoreData
@@ -78,5 +79,9 @@ final class CoreDataMessageStorageProvider: MessageStorageProvider {
                 debugPrint("Unresolved error \(error), \((error as NSError).userInfo)")
             }
         }
+    }
+
+    func clearStorage() {
+        coreDataStack.clear()
     }
 }

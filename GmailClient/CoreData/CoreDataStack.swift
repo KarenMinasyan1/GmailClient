@@ -40,6 +40,27 @@ final class CoreDataStack: NSObject {
         }
     }
 
+    func clear() {
+        // Get a reference to a NSPersistentStoreCoordinator
+        let storeContainer = persistentContainer.persistentStoreCoordinator
+
+        // Delete each existing persistent store
+        for store in storeContainer.persistentStores {
+            try? storeContainer.destroyPersistentStore(at: store.url!, ofType: store.type, options: nil)
+        }
+
+        // Re-create the persistent container
+        persistentContainer = NSPersistentContainer(name: "GmailClient")
+
+        // Calling loadPersistentStores will re-create the
+        // persistent stores
+        persistentContainer.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                assertionFailure("CoreDataStorage Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+    }
+    
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         persistentContainer.performBackgroundTask(block)
     }

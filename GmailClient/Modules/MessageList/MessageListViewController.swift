@@ -63,8 +63,7 @@ final class MessageListViewController: ViewController {
     func logoutAction(_ isLoggedOut: Bool) {
         if isLoggedOut {
             // TODO duplicate
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(identifier: "SignInViewController") as! SignInViewController
+            let viewController = SignInViewController()
             let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
             viewController.viewModel = viewModel
             UIApplication.setRootView(viewController)

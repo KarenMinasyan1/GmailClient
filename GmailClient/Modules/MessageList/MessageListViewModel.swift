@@ -61,6 +61,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
 
     func logoutTap() {
         GoogleAuthorizationService.removeState()
+        storageProvider.clearStorage()
         logout.value = true
     }
 

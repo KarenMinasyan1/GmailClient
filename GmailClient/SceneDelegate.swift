@@ -13,21 +13,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        /// 1. Capture the scene
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        /// 2. Create a new UIWindow using the windowScene constructor which takes in a window scene.
         let window = UIWindow(windowScene: windowScene)
-
-        /// 3. Create a view hierarchy programmatically
 
         var viewController: UIViewController
 
-//        GTMAppAuthFetcherAuthorization.removeFromKeychain(forName: GoogleAuthorizationService.authorizerKey)
         if let authorizer = GTMAppAuthFetcherAuthorization(fromKeychainForName: GoogleAuthorizationService.authorizerKey) {
             let networkService = GmailNetworkService(authorizer: authorizer, parser: Parser())
             let gmailMessageProvider = GmailMessageProvider(networkService: networkService)
-
             let viewModel = DefaultMessageListViewModel(messageProvider: gmailMessageProvider,
                                                         storageProvider: CoreDataMessageStorageProvider(),
                                                         userID: authorizer.userID!)
@@ -35,8 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             messageListVC.viewModel = viewModel
             viewController = UINavigationController(rootViewController: messageListVC)
         } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController = storyboard.instantiateViewController(identifier: "SignInViewController")
+            viewController = SignInViewController()
             let viewModel = DefaultSignInViewModel(authService: GoogleAuthorizationService())
             (viewController as! SignInViewController).viewModel = viewModel
         }
