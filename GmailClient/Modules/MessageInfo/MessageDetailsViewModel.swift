@@ -67,7 +67,7 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
             case .success(let fullMessage):
                 let messageInfo = MessageInfo(fullMessage: fullMessage)
                 self.messageInfo.value = messageInfo
-                // Save message in storage
+                // Save message to storage
                 self.storageProvider.save(messageInfo: messageInfo)
             case .failure(let error):
                 self.errorMessage.value = error.localizedDescription

@@ -63,6 +63,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
     }
 
     // Private
+
     private func loadMessageList() {
         storageProvider.messageList(userID: userID) { [weak self] (result: Result<[String], StorageError>) in
             guard let self = self else { return }
