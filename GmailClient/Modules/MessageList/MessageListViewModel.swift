@@ -6,7 +6,7 @@
 //
 
 protocol MessageListViewModelInput {
-    func viewDidLoad()
+    func viewInitialLoad()
     func didSelectItem(at index: Int)
     func logoutTap()
 }
@@ -43,7 +43,7 @@ final class DefaultMessageListViewModel: MessageListViewModel {
 
     // Input
 
-    func viewDidLoad() {
+    func viewInitialLoad() {
         loadMessageList()
     }
 

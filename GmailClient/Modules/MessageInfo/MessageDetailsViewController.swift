@@ -22,7 +22,7 @@ final class MessageDetailsViewController: UIViewController {
         configureHierarhies()
         setupUI()
         bindViewModel()
-        viewModel.viewDidLoad()
+        viewModel.viewInitialLoad()
     }
 
     private func bindViewModel() {

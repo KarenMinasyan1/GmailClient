@@ -21,7 +21,7 @@ final class MessageListViewController: UIViewController {
         configureTableView()
         configureDataSource()
         bindViewModel()
-        viewModel.viewDidLoad()
+        viewModel.viewInitialLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOutTap))
     }
 

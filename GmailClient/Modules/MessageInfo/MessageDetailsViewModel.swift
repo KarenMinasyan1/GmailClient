@@ -6,7 +6,7 @@
 //
 
 protocol MessageDetailsViewModelInput {
-    func viewDidLoad()
+    func viewInitialLoad()
 }
 
 protocol MessageDetailsViewModelOutput {
@@ -40,7 +40,7 @@ final class DefaultMessageDetailsViewModel: MessageDetailsViewModel {
 
     // Input
 
-    func viewDidLoad() {
+    func viewInitialLoad() {
         loadMessage()
     }
 
