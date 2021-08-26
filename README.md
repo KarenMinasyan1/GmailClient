@@ -1,5 +1,5 @@
 # Gmail Client
-The app is designed to provide example of the basic workings of the Google Client Library.
+The app is designed to provide example of the basic workings of the Gmail Client Library.
 
 ## Installation instructons
 In order to use the project, you will need to use CocoaPods to install dependencies.
