@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MessageDetailsViewController: ViewController {
+final class MessageDetailsViewController: UIViewController {
 
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
@@ -66,9 +66,11 @@ final class MessageDetailsViewController: ViewController {
         bodyLabel.text = info.body
     }
 
-    override func showAlert(title: String, message: String, preferredStyle: UIAlertController.Style, actionHandler: ((UIAlertAction) -> Void)?) {
-        super.showAlert(title: title, message: message, preferredStyle: preferredStyle) { [weak self] _ in
-            self?.navigationController?.popViewController(animated: true)
+    private func showError(message: String) {
+        if !message.isEmpty {
+            showAlert(message: message) { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }

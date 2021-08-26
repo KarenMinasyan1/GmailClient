@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SignInViewController: ViewController {
+final class SignInViewController: UIViewController {
 
     var viewModel: SignInViewModel!
     var authService: AuthorizationService!
@@ -46,6 +46,12 @@ final class SignInViewController: ViewController {
         let navController = UINavigationController(rootViewController: viewController)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)
+    }
+
+    private func showError(message: String) {
+        if !message.isEmpty {
+            showAlert(message: message)
+        }
     }
 }
 

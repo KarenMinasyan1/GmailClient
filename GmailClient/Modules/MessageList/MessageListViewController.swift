@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MessageListViewController: ViewController {
+final class MessageListViewController: UIViewController {
 
     var viewModel: MessageListViewModel!
 
@@ -60,6 +60,12 @@ final class MessageListViewController: ViewController {
             viewController.authService = GoogleAuthorizationService()
             viewController.viewModel = viewModel
             UIApplication.setRootView(viewController)
+        }
+    }
+
+    private func showError(message: String) {
+        if !message.isEmpty {
+            showAlert(message: message)
         }
     }
 }
