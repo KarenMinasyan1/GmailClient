@@ -8,7 +8,6 @@
 struct FullMessageResponse: Codable {
     let id: String?
     let payload: Payload?
-
 }
 
 struct Payload: Codable {
